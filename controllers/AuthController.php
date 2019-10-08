@@ -1,14 +1,36 @@
-require_once('../lib/request.php');
-$conf = require_once('../config/auth.php');
+<?php
 
-class AuthController extends Request {
-    function __construct()
+include_once('BaseController.php');
+
+
+class AuthController extends BaseController {
+
+    function __construct($config)
     {
-        parent::__construct();
+        parent::__construct($config);
     }
 
-    function auth()
+    //
+    // Тут идут твои функции
+    //
+
+    /**
+     * Пример
+     *
+     * @return @mixed
+     */
+    function profile()
     {
-        $this->
+        // так мы получаем значение переменной
+        //          $this->conf('urls.profile')
+        // Теперь кидаем ее в метод, и он отправляет запрос
+        $data = $this->get(
+            $this->conf('urls.profile')
+        );
+
+        // это хэлпер, проверяет что мы были авторизованы
+        // если нет, то полшет запро еще раз
+        // может уйти в цикл, так что аккуратнее
+        return $this->check('profile', $data);
     }
 }
