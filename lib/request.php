@@ -5,8 +5,8 @@
 */
 class Request
 {
-    private $ch;
-    private $cookie = '';
+    protected $ch;
+    protected $cookie = '';
 
     /**
      * CURLOPT_COOKIEJAR  - файл, куда пишутся куки после закрытия коннекта, например после curl_close()
